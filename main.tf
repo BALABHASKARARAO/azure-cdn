@@ -19,6 +19,13 @@ resource "azurerm_storage_container" "container" {
   #container_access_type = "private"
 }
 
+resource "azurerm_storage_blob" "blob-upload" {
+  name                   = "image-4.jpg"
+  storage_account_name   = azurerm_storage_account.sa.name
+  storage_container_name = azurerm_storage_container.container.name
+  type                   = "Block"
+  source                 = "./images/image-4.jpg"
+}
 
 resource "azurerm_cdn_profile" "cdn-profile" {
   name                = "cdn-profile-4"
